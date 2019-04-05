@@ -6,10 +6,10 @@ import org.openqa.selenium.interactions.Actions;
 
 public class slapKirk {
 
-    public static void moveCursorLeft(Actions actions, WebElement webElement){
+    public static void moveLeft(Actions actions, WebElement webElement){
         actions.moveToElement(webElement).moveByOffset(-75,  0).build().perform();
     }
-    public static void moveCursorRight(Actions actions, WebElement webElement){
+    public static void moveRight(Actions actions, WebElement webElement){
         actions.moveToElement(webElement).moveByOffset(75,  0).build().perform();
     }
 
@@ -22,13 +22,13 @@ public class slapKirk {
         WebElement playButton = driver.findElement(By.id("playButton"));
         playButton.click();
 
-        Actions builder = new Actions(driver);
+        Actions mouseCursor = new Actions(driver);
 
-        WebElement kirk = driver.findElement(By.id("animationImage"));
+        WebElement kirkImage = driver.findElement(By.id("animationImage"));
 
         for(int i = 0; i < 1000; i++ ){
-            if (i % 2 == 0) moveCursorLeft(builder, kirk);
-            else moveCursorRight(builder, kirk);
+            if (i % 2 == 0) moveLeft(mouseCursor, kirkImage);
+            else moveRight(mouseCursor, kirkImage);
         }
         WebElement fastest = driver.findElement(By.id("highScoreLink"));
 
