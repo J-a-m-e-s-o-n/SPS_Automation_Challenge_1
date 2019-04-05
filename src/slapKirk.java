@@ -30,9 +30,13 @@ public class slapKirk {
             if (i % 2 == 0) moveLeft(mouseCursor, kirkImage);
             else moveRight(mouseCursor, kirkImage);
         }
-        WebElement fastest = driver.findElement(By.id("highScoreLink"));
+        WebElement scoreBox = driver.findElement(By.id("scoreBox"));
+        WebElement fastestScoreBox = driver.findElement(By.id("highScoreLink"));
+        String totalAndAverage = scoreBox.getText();
 
-        System.out.println(fastest.getText());
+        System.out.println("Average" + totalAndAverage.substring(16,26));
+        System.out.println(fastestScoreBox.getText());
+        System.out.println("Total " + totalAndAverage.substring(0,16));
         driver.quit();
     }
 }
