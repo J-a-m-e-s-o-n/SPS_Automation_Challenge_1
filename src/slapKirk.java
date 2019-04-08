@@ -13,6 +13,12 @@ public class slapKirk {
         actions.moveToElement(webElement).moveByOffset(75,  0).build().perform();
     }
 
+    public static void printScores(String totalAndAverage, WebElement fastest){
+        System.out.println("Average" + totalAndAverage.substring(16,26));
+        System.out.println(fastest.getText());
+        System.out.println("Total " + totalAndAverage.substring(0,16));
+    }
+
     public static void main(String[] args) {
         String TARGET_URL ="http://www.slapKirk.com/";
 
@@ -30,13 +36,12 @@ public class slapKirk {
             if (i % 2 == 0) moveLeft(mouseCursor, kirkImage);
             else moveRight(mouseCursor, kirkImage);
         }
+
         WebElement scoreBox = driver.findElement(By.id("scoreBox"));
         WebElement fastestScoreBox = driver.findElement(By.id("highScoreLink"));
         String totalAndAverage = scoreBox.getText();
 
-        System.out.println("Average" + totalAndAverage.substring(16,26));
-        System.out.println(fastestScoreBox.getText());
-        System.out.println("Total " + totalAndAverage.substring(0,16));
+        printScores(totalAndAverage, fastestScoreBox);
         driver.quit();
     }
 }
